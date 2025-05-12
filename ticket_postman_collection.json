@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "b47f919c-c025-4bea-9df7-7f27075ba387",
+		"name": "Ticket Sistemi Postman Collection",
+		"description": "Ticket oluşturma, görüntüleme ve yanıtlama sistemi.\n\n---\n\nADMIN kullanıcı bilgileri;\n\nusername: admin  \npassword: ubuntutr123  \nJWT Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0Njk4MTI4MiwiZXhwIjoxNzQ3MzQxMjgyfQ.qGg_G4OqEn3TGux1ZhwmaRdIYwG4bufruQMY2ljnns4\n\n---\n\nUSER örnek kullanıcı;  \nusername: ali19  \npassword: ubuntutr123\n\nJWT Token:eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGkxOSIsImlhdCI6MTc0Njk4MTU5MiwiZXhwIjoxNzQ3MzQxNTkyfQ.yAY4htkX0ebD_0BY5qEcj0chaTyO_2R8a6UKaaeWvOQ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44854462",
+		"_collection_link": "https://recepbaykan.postman.co/workspace/8f4da7ff-cce7-4755-879b-e4097ed67bd9/collection/44854462-b47f919c-c025-4bea-9df7-7f27075ba387?action=share&source=collection_link&creator=44854462"
+	},
+	"item": [
+		{
+			"name": "Tüm kullanıcıları getir",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0Njk4MTI4MiwiZXhwIjoxNzQ3MzQxMjgyfQ.qGg_G4OqEn3TGux1ZhwmaRdIYwG4bufruQMY2ljnns4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user"
+					]
+				},
+				"description": "ADMIN Rolü erişebilir. Tüm kullanıcıları ve biletleri getirir.  \n  \nKullanıcıların kimlik doğrulaması JWT token aracılığıyla gerçekleştirilir\n\nAdmin token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0Njk4MTI4MiwiZXhwIjoxNzQ3MzQxMjgyfQ.qGg_G4OqEn3TGux1ZhwmaRdIYwG4bufruQMY2ljnns4"
+			},
+			"response": []
+		},
+		{
+			"name": "Kullanıcı bilgileri ile JWT token üret",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"ahmet4\",\n    \"password\": \"ahmet123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				},
+				"description": "Kullanıcılar, giriş bilgileri ile JWT Token elde ederler. Bu token ile, belirli API'lere erişim hakları olur."
+			},
+			"response": []
+		},
+		{
+			"name": "Kullanıcı oluşturma",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstname\": \"Ahmet\",\n    \"lastname\": \"Sarı\",\n    \"username\": \"ahmet4\",\n    \"password\": \"ahmet123\",\n    \"repassword\": \"ahmet123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				},
+				"description": "Kullanıcı oluşturma API'si."
+			},
+			"response": []
+		},
+		{
+			"name": "Bilet oluştur",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbGkxOSIsImlhdCI6MTc0Njk4MTU5MiwiZXhwIjoxNzQ3MzQxNTkyfQ.yAY4htkX0ebD_0BY5qEcj0chaTyO_2R8a6UKaaeWvOQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userID\" : \"5\",\n    \"thread\": \"New Thread\",\n    \"message\" :\"New Message\",\n    \"ticketCategory\": \"HELP\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/createTicket",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"createTicket"
+					]
+				},
+				"description": "ADMIN ve USER rolündeki kullanıcılar, bilet oluşturabilir.\n\nKullanıcıların kimlik doğrulaması JWT token aracılığıyla gerçekleştirilir"
+			},
+			"response": []
+		},
+		{
+			"name": "Tüm biletleri getir",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0Njk4MTI4MiwiZXhwIjoxNzQ3MzQxMjgyfQ.qGg_G4OqEn3TGux1ZhwmaRdIYwG4bufruQMY2ljnns4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/user/tickets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"tickets"
+					]
+				},
+				"description": "ADMIN rolündeki kullanıcılar, tüm biletleri göntüleyebilir.  \n  \nKullanıcıların kimlik doğrulaması, JWT token aracılığıyla gerçekleştirilir  \n\nADMIN token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0Njk4MTI4MiwiZXhwIjoxNzQ3MzQxMjgyfQ.qGg_G4OqEn3TGux1ZhwmaRdIYwG4bufruQMY2ljnns4"
+			},
+			"response": []
+		},
+		{
+			"name": "Bileti yanıtla",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0Njk4MzEyNCwiZXhwIjoxNzQ3MzQzMTI0fQ.RcjteD3O-uAaPisMExzU-dASuwDPxZIWy3gaftLPI-4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": 1,\n    \"ticketId\": 18,\n    \"mes\": \"Hi, postman\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/sendMessage",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"sendMessage"
+					]
+				},
+				"description": "USER rolündeki kullanıcılar, sadece kendi biletlerini yanıtlayaabilir.  \nADMIN rolündeki kullanıcılar, her mesajı yanıtlar.  \n  \nKullanıcıların kimlik doğrulaması JWT token aracılığıyla gerçekleştirilir"
+			},
+			"response": []
+		},
+		{
+			"name": "Bileti kapat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0Njk4MTI4MiwiZXhwIjoxNzQ3MzQxMjgyfQ.qGg_G4OqEn3TGux1ZhwmaRdIYwG4bufruQMY2ljnns4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 38\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/user/closeTicket",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user",
+						"closeTicket"
+					]
+				},
+				"description": "ADMIN rolündeki kullanıcılar, herhangi bir bileti kapatabilir.\n\nKullanıcılar, JWT Token ile doğrulanır."
+			},
+			"response": []
+		}
+	]
+}

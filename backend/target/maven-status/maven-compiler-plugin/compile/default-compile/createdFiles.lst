@@ -41,6 +41,7 @@ com/proje/web/dto/UserDTO.class
 com/proje/security/exceptions/TicketNotFound.class
 com/proje/web/model/Message.class
 com/proje/web/dto/CreateUser.class
+com/proje/web/controller/CustomGlobalException.class
 com/proje/web/model/Role.class
 com/proje/security/service/AccountDetailsService.class
 com/proje/web/dto/CreateUser$CreateUserBuilder.class

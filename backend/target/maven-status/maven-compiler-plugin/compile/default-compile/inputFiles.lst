@@ -27,6 +27,7 @@
 /home/nanith/Documents/Ticket_Web_App/backend/src/main/java/com/proje/web/dto/CloseTicket.java
 /home/nanith/Documents/Ticket_Web_App/backend/src/main/java/com/proje/security/exceptions/UserAlReady.java
 /home/nanith/Documents/Ticket_Web_App/backend/src/main/java/com/proje/security/configuration/AuthEntryPoint.java
+/home/nanith/Documents/Ticket_Web_App/backend/src/main/java/com/proje/web/controller/CustomGlobalException.java
 /home/nanith/Documents/Ticket_Web_App/backend/src/main/java/com/proje/security/exceptions/TicketClosed.java
 /home/nanith/Documents/Ticket_Web_App/backend/src/main/java/com/proje/web/dto/SendMessage.java
 /home/nanith/Documents/Ticket_Web_App/backend/src/main/java/com/proje/web/model/TicketCategory.java

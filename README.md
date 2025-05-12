@@ -66,4 +66,4 @@ npm run dev
 Swagger UI bağlantısı: http://localhost:8080/swagger-ui/index.html
 
 ### Postman Koleksiyonu
-Proje dizinindeki `postman_collection.json` dosyasını Postman uygulamasına import edebilirsiniz.
+Proje dizinindeki `ticket_postman_collection.json` dosyasını Postman uygulamasına import edebilirsiniz.
